@@ -5,8 +5,22 @@ router.get('/', (req, res)=>{
     res.render('adminIndex')
 })
 
-router.get('/addStaff', (req,res)=>{
-    res.render('addStaff')
+router.get('/addUser', (req,res)=>{
+    res.render('addUser')
+})
+
+router.post('/addUser', (req,res)=>{
+    const name = req.body.txtName
+    const role = req.body.txtRole
+    const pass = req.body.txtPassword
+    
+    const objectToInsert = {
+        userName: name,
+        role:role,
+        password: pass
+    }
+    insertObject("Users",objectToInsert)
+    res.render('adminIndex')
 })
 
 module.exports = router;
